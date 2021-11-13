@@ -8,7 +8,7 @@ using ZT2Y9R_HFT_2021221.Models;
 
 namespace ZT2Y9R_HFT_2021221.Data
 {
-    class SuperLeagueDbContext : DbContext
+    public class SuperLeagueDbContext : DbContext
     {       
 
         protected SuperLeagueDbContext()
