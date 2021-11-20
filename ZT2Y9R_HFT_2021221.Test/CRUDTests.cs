@@ -50,5 +50,26 @@ namespace ZT2Y9R_HFT_2021221.Test
             businessManagerLogic.InsertNewBusinessManager("Ibrahim", 26, 10);
             mockedBusinessManagerRepository.Verify(repo => repo.Add(It.IsAny<BusinessManagers>()), Times.Once);
         }
+        [Test]
+        public void TestDeletePlayer()
+        {
+            Mock<IPlayerRepository> mockedPlayerRepo = new Mock<IPlayerRepository>(MockBehavior.Loose);
+
+            List<Players> testPlayers = new List<Players>()
+            {
+                new Players() { PlayerId = 1, Name = "Jon", age =23, BusinessManagersId=1, ClubId =1, Position="Attacker", PlayerSalary=50  },
+                new Players() { PlayerId = 2, Name = "Lilla",age =18, BusinessManagersId=2, ClubId =2, Position="Defender", PlayerSalary=10  },
+                new Players() { PlayerId = 3, Name = "Halk",age =27, BusinessManagersId=3, ClubId =3, Position="GoalKeeper", PlayerSalary=23  },
+            };
+
+            mockedPlayerRepo.Setup(repo => repo.GetAll()).Returns(testPlayers.AsQueryable());
+            mockedPlayerRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testPlayers.Where(x => x.Id == i).Single());
+            mockedPlayerRepo.Setup(repo => repo.Delete(It.IsAny<int>()));
+
+            PlayersLogic playersLogic = new PlayersLogic(mockedPlayerRepo.Object);
+            playersLogic.deletePlayer(2);
+            mockedPlayerRepo.Verify(repo => repo.Delete(2));
+
+        }
     }
 }
