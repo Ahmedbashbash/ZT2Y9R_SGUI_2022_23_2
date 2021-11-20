@@ -9,6 +9,6 @@ namespace ZT2Y9R_HFT_2021221.Repository
 {
     public interface IClubRepository : IRepository<Clubs>
     {
-        void changeNumberOfTrophies(int id, int newSalary);
+        void changeNumberOfTrophies(int id, int numberOfTrophies);
     }
 }

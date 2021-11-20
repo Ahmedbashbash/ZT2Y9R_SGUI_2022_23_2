@@ -15,6 +15,6 @@ namespace ZT2Y9R_HFT_2021221.Repository
 
         void Update(T entity);
 
-        void Delete(T entity);
+        void Delete(int id);
     }
 }

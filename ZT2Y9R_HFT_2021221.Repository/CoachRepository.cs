@@ -18,6 +18,12 @@ namespace ZT2Y9R_HFT_2021221.Repository
         {
             return this.GetAll().SingleOrDefault(x => x.CoachId == id);
         }
+        public override void Delete(int id)
+        {
+            Coaches obj = this.GetOne(id);
+            this.SuperLeagueDbContext.Set<Coaches>().Remove(obj);
+            this.SuperLeagueDbContext.SaveChanges();
+        }
         public void changeCoachSalary(int id, int newSalary)
         {
             var coaches = this.GetOne(id);

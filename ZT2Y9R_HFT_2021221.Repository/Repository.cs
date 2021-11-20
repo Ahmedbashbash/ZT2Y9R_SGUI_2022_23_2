@@ -23,13 +23,7 @@ namespace ZT2Y9R_HFT_2021221.Repository
             SuperLeagueDbContext.SaveChanges();
         }
 
-        public void Delete(T entity)
-        {
-            SuperLeagueDbContext.Set<T>().Remove(entity);
-
-            SuperLeagueDbContext.SaveChanges();
-        }
-
+        public abstract void Delete(int id);
         public IQueryable<T> GetAll()
         {
             return SuperLeagueDbContext.Set<T>();

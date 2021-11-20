@@ -18,6 +18,12 @@ namespace ZT2Y9R_HFT_2021221.Repository
         {
             return this.GetAll().SingleOrDefault(x => x.ClubId == id);
         }
+        public override void Delete(int id)
+        {
+            Clubs obj = this.GetOne(id);
+            this.SuperLeagueDbContext.Set<Clubs>().Remove(obj);
+            this.SuperLeagueDbContext.SaveChanges();
+        }
 
         public void changeNumberOfTrophies(int id, int newTrophy)
         {
