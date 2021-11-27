@@ -63,7 +63,7 @@ namespace ZT2Y9R_HFT_2021221.Test
             };
 
             mockedPlayerRepo.Setup(repo => repo.GetAll()).Returns(testPlayers.AsQueryable());
-            mockedPlayerRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testPlayers.Where(x => x.Id == i).Single());
+            mockedPlayerRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testPlayers.Where(x => x.BusinessManagersId == i).Single());
             mockedPlayerRepo.Setup(repo => repo.Delete(It.IsAny<int>()));
 
             PlayersLogic playersLogic = new PlayersLogic(mockedPlayerRepo.Object);
