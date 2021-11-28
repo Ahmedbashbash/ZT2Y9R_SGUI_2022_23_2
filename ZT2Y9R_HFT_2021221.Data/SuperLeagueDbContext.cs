@@ -64,16 +64,6 @@ namespace ZT2Y9R_HFT_2021221.Data
 
 
 
-            //modelBuilder.Entity<Players>(entity =>
-            //{
-            //    entity.HasOne(Players => Players.BusinessManagers)
-            //    .WithMany(BusinessManagers=> BusinessManagers.Players)
-            //    .HasForeignKey(Players => Players.BusinessManagersId)
-            //    .OnDelete(DeleteBehavior.SetNull);
-            //});
-
-
-
            
 
             modelBuilder.Entity<Clubs>().HasData(clubs1, clubs2, clubs3);
