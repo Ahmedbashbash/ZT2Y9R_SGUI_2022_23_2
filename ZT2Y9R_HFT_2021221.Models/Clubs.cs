@@ -30,12 +30,9 @@ namespace ZT2Y9R_HFT_2021221.Models
         public int NumberOfTrophies { get; set; }
 
 
-        
-        [ForeignKey(nameof(Coach))]
-        public int? CoachId { get; set; }
 
-        [NotMapped]
-        public virtual Coaches Coach { get; set; }
+
+        public virtual ICollection<Coaches> Coaches { get; }
 
 
 
@@ -44,7 +41,7 @@ namespace ZT2Y9R_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{this.ClubId} | {this.Name}, has {this.NumberOfTrophies} trophies, and has {this.Players.Count} players, and thier coach is: {this.Coach.Name} ";
+            return $"{this.ClubId} | {this.Name}, has {this.NumberOfTrophies} trophies, and has {this.Players.Count} players, and they have {Coaches.Count} Coach.";
         }
 
     }

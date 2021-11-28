@@ -15,35 +15,36 @@ namespace ZT2Y9R_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PlayerId { get; set; }
 
-
+        [MaxLength(100)]
+        [Required]
         public string Name { get; set; }
 
-
+        [Required]
         public int age { get; set; }
 
-
+        [Required]
         public string Position { get; set; }
 
-
+        [Required]
         public int? PlayerSalary { get; set; }
-
-
-
-        [ForeignKey(nameof(Club))]
-        public int ClubId { get; set; }
 
 
         [NotMapped]
         public virtual Clubs Club { get; set; }
 
 
+        [ForeignKey(nameof(Club))]
+        public int ClubId { get; set; }
+
+        
+        [NotMapped]
+        public virtual BusinessManagers BusinessManagers { get; set; }
 
 
         [ForeignKey(nameof(BusinessManagers))]
         public int BusinessManagersId { get; set; }
 
-        [NotMapped]
-        public virtual BusinessManagers BusinessManagers { get; set; }
+        
 
         public override string ToString()
         {

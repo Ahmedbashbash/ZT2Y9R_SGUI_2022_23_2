@@ -33,16 +33,16 @@ namespace ZT2Y9R_HFT_2021221.Endpoint.Controllers
         }
 
 
-        [HttpPut]
+        
 
 
-        [HttpPut]
+        [HttpPost]
         public void Add(string name, int numberOfTrophies)
         {
             cl.InsertNewClub(name, numberOfTrophies);
         }
 
-
+        [HttpPut]
         public void changeNumberOfTrophies(int Id, int numberofTrophies)
         {
             cl.changeNumberOfTrophies(Id, numberofTrophies);

@@ -33,7 +33,7 @@ namespace ZT2Y9R_HFT_2021221.Endpoint.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPost]
         public void Add(string name, int age, string postion, int salary)
         {
             cl.InsertNewPlayer(name, age, postion, salary);

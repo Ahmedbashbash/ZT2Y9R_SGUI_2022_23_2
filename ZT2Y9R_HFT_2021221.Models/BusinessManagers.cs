@@ -22,16 +22,18 @@ namespace ZT2Y9R_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BusinessManagerId { get; set; }
 
-
+        [MaxLength(100)]
+        [Required]
         public string Name { get; set; }
 
-
+        [Required]
         public int age { get; set; }
 
+        [Required]
         public int? Salary { get; set; }        
 
         [NotMapped]
-        public virtual ICollection<Players> Players { get; set; }
+        public virtual ICollection<Players> Players { get; }
 
 
         public override string ToString()

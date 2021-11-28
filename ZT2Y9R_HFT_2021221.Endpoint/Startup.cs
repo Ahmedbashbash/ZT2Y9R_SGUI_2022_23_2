@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZT2Y9R_HFT_2021221.Data;
 using ZT2Y9R_HFT_2021221.Logic;
 using ZT2Y9R_HFT_2021221.Repository;
 
@@ -28,6 +29,8 @@ namespace ZT2Y9R_HFT_2021221.Endpoint
             services.AddTransient<IClubRepository, ClubRepository>();
             services.AddTransient<IBusinessManagerLogic, BusinessManagerLogic>();
             services.AddTransient<IBusinessManagerRepository, BusinessManagerRepository>();
+            services.AddTransient<SuperLeagueDbContext, SuperLeagueDbContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
