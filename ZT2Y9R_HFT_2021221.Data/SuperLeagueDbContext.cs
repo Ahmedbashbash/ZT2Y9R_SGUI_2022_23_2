@@ -72,13 +72,6 @@ namespace ZT2Y9R_HFT_2021221.Data
             //    .OnDelete(DeleteBehavior.SetNull);
             //});
 
-            //modelBuilder.Entity<Players>(entity =>
-            //{
-            //    entity.HasOne(Players => Players.Club)
-            //    .WithMany(Clubs => Clubs.Players)
-            //    .HasForeignKey(Players => Players.ClubId)
-            //    .OnDelete(DeleteBehavior.SetNull);
-            //});
 
 
            
