@@ -10,6 +10,7 @@ namespace Client
     class RestService
     {
         HttpClient client;
+
         public RestService(string baseurl)
         {
             Init(baseurl);
@@ -67,6 +68,19 @@ namespace Client
             return item;
         }
 
+        public List<T> Get<T>(string endpoint, string methodToGet, string textinput)
+        {
+            List<T> items = new List<T>();
+            string concatenatedPath = endpoint + "/" + methodToGet + "/" + textinput;
+            HttpResponseMessage response = client.GetAsync(concatenatedPath).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            return items;
+        }
+
         public void Post<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
@@ -92,7 +106,27 @@ namespace Client
             response.EnsureSuccessStatusCode();
         }
 
+        public void Put<T>(T item, string endpoint, string updateMethodName)
+        {
+            HttpResponseMessage response =
+                client.PutAsJsonAsync(endpoint + "/" + updateMethodName, item).GetAwaiter().GetResult();
+
+
+            response.EnsureSuccessStatusCode();
+        }
+
+        public List<T> Get<T>(string endpoint, string methodToGet, int id)
+        {
+            List<T> items = new List<T>();
+            string concatenatedPath = endpoint + "/" + methodToGet + "/" + id.ToString();
+            HttpResponseMessage response = client.GetAsync(concatenatedPath).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            return items;
+        }
     }
 
-}
 }
