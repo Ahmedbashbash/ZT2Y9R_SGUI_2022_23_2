@@ -99,13 +99,13 @@ namespace ZT2Y9R_HFT_2021221.Test
 
             List<Clubs> testClubs = new List<Clubs> ()
             {
-                new Clubs() { ClubId= 1, Name = "Real", CoachId=1, NumberOfTrophies=33 },
-                new Clubs() { ClubId = 2, Name = "Barca", CoachId=2, NumberOfTrophies=20  },
-                new Clubs() { ClubId = 3, Name = "PSG", CoachId=3, NumberOfTrophies=16  },
+                new Clubs() { ClubId= 1, Name = "Real", NumberOfTrophies=33 },
+                new Clubs() { ClubId = 2, Name = "Barca", NumberOfTrophies=20  },
+                new Clubs() { ClubId = 3, Name = "PSG", NumberOfTrophies=16  },
             };
 
             mockedClubRepo.Setup(repo => repo.GetAll()).Returns(testClubs.AsQueryable());
-            mockedClubRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testClubs.Where(x => x.CoachId == i).Single());
+            mockedClubRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testClubs.Where(x => x.ClubId == i).Single());
             mockedClubRepo.Setup(repo => repo.Delete(It.IsAny<int>()));
 
             ClubsLogic ClubsLogic = new ClubsLogic(mockedClubRepo.Object);
@@ -142,12 +142,12 @@ namespace ZT2Y9R_HFT_2021221.Test
 
             List<Clubs> testClubs = new List<Clubs>()
             {
-                new Clubs() { ClubId= 1, Name = "Real", CoachId=1, NumberOfTrophies=33 },
-                new Clubs() { ClubId = 2, Name = "Barca", CoachId=2, NumberOfTrophies=20  },
+                new Clubs() { ClubId= 1, Name = "Real", NumberOfTrophies=33 },
+                new Clubs() { ClubId = 2, Name = "Barca", NumberOfTrophies=20  },
             };
 
             mockedClubRepo.Setup(repo => repo.GetAll()).Returns(testClubs.AsQueryable());
-            mockedClubRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testClubs.Where(x => x.CoachId == i).Single());
+            mockedClubRepo.Setup(repo => repo.GetOne(It.IsAny<int>())).Returns((int i) => testClubs.Where(x => x.ClubId == i).Single());
 
             ClubsLogic ClubsLogic = new ClubsLogic(mockedClubRepo.Object);
             ClubsLogic.changeNumberOfTrophies(1, 34);
