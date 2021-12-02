@@ -9,8 +9,9 @@ namespace Client
     {
         static void Main(string[] args)
         {
+            System.Threading.Thread.Sleep(8000);
 
-            RestService rest = new RestService("http://localhost:5554");
+            RestService rest = new RestService("http://localhost:5828");
 
             var clubs = new ConsoleMenu()
                 .Add("Create Club", () => CreateClub(rest))
