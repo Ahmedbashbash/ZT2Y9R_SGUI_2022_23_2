@@ -10,16 +10,46 @@ namespace Client
         static void Main(string[] args)
         {
 
-            RestService rest = new RestService("http://localhost:5828");
+            RestService rest = new RestService("http://localhost:5555");
 
-            var Menu = new ConsoleMenu()
-                .Add("Create Club", () => CreateClub(rest))
-                .Add("Add Player", () => CreatePlayer(rest))
+            var Club = new ConsoleMenu()
+                .Add("Create Club", () => CreateClub(rest))                
+                .Add("Get Club", () => GetClub(rest))               
+                .Add("Go back to the previes menu", ConsoleMenu.Close)
+                .Configure(config =>
+                {
+                    config.Selector = " --> ";
+                    config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
+                });
+
+
+
+            var Coach = new ConsoleMenu()
                 .Add("Add Coach", () => CreateCoach(rest))
-                .Add("Add Business Manager", () => CreateBusinessManager(rest))
-                .Add("Get Club", () => GetClub(rest))
-                .Add("Get Player", () => GetPlayer(rest))
                 .Add("Get Coach", () => GetCoach(rest))
+                .Add("Go back to the previes menu", ConsoleMenu.Close)
+                .Configure(config =>
+                {
+                    config.Selector = " --> ";
+                    config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
+                });
+
+
+
+            var Player = new ConsoleMenu()
+                .Add("Add Player", () => CreatePlayer(rest))
+                .Add("Get Player", () => GetPlayer(rest))
+                .Add("Go back to the previes menu", ConsoleMenu.Close)
+                .Configure(config =>
+                {
+                    config.Selector = " --> ";
+                    config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
+                });
+
+
+
+            var BusinessManager = new ConsoleMenu()
+                .Add("Add Business Manager", () => CreateBusinessManager(rest))
                 .Add("Get Business Manager", () => GetBusinessManager(rest))
                 .Add("Go back to the previes menu", ConsoleMenu.Close)
                 .Configure(config =>
@@ -27,6 +57,39 @@ namespace Client
                     config.Selector = " --> ";
                     config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
                 });
+
+
+
+
+            var crud = new ConsoleMenu()
+               .Add("Club", () => Club.Show())
+               .Add("Player", ()=> Player.Show())
+               .Add("Coach",()=>Coach.Show())
+               .Add("Business Manager", ()=> BusinessManager.Show())
+
+               .Add("Go back to previous menu", ConsoleMenu.Close)
+               .Configure(config =>
+               {
+                   config.Selector = "--> ";
+                   config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
+               });
+
+
+
+
+            var menu = new ConsoleMenu()
+                 .Add("CRUD METHODS", () => crud.Show())
+                 .Add("Exit from the application", ConsoleMenu.Close)
+                 .Configure(config =>
+                 {
+                     config.Selector = "--> ";
+                     config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
+                     config.EnableFilter = true;
+                     config.Title = "Main menu";
+                     //config.EnableWriteTitle = true;
+                     config.EnableBreadcrumb = true;
+                 });
+            menu.Show();
         }
 
         private static void CreateClub(RestService rest)

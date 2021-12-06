@@ -18,9 +18,9 @@
     "ZT2Y9R_HFT_2021221.Endpoint": {
         "commandName": "Project",
         "dotnetRunMessages": "true",
-        "launchBrowser": true,
+        "launchBrowser": false,
         //"launchUrl": "club",
-        "applicationUrl": "http://localhost:5000",
+        "applicationUrl": "http://localhost:5555",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
