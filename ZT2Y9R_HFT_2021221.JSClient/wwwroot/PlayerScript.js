@@ -64,7 +64,7 @@ function create() {
     let nam = document.getElementById('name').value;
     let ag = document.getElementById('age').value;
     let postio = document.getElementById('position').value;
-    let salar = document.getElementById('salary').value;
+    let salar = document.getElementById('playerSalary').value;
     fetch('http://localhost:5555/player', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
