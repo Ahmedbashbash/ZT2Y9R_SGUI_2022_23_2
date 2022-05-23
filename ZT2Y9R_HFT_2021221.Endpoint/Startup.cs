@@ -39,7 +39,7 @@ namespace ZT2Y9R_HFT_2021221.Endpoint
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieDbApp.Endpoint", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = " ZT2Y9R_HFT_2021221.Endpoint", Version = "v1" });
             });
 
         }
@@ -51,7 +51,7 @@ namespace ZT2Y9R_HFT_2021221.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MovieDbApp.Endpoint v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", " ZT2Y9R_HFT_2021221.Endpoint v1"));
             }
 
             app.UseExceptionHandler(c => c.Run(async context =>
@@ -67,7 +67,7 @@ namespace ZT2Y9R_HFT_2021221.Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:5555"));
+                .WithOrigins("http://localhost:25918"));
 
 
             app.UseRouting();

@@ -1,4 +1,4 @@
-﻿let actors = [];
+﻿let BusinessManager = [];
 let connection = null;
 getdata();
 setupSignalR();
@@ -10,11 +10,11 @@ function setupSignalR() {
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    connection.on("PlayerCreated", (user, message) => {
+    connection.on("BusinessManagerCreated", (user, message) => {
         getdata();
     });
 
-    connection.on("PlayerDeleted", (user, message) => {
+    connection.on("BusinessManagerDeleted", (user, message) => {
         getdata();
     });
 
@@ -26,39 +26,27 @@ function setupSignalR() {
 
 }
 
-async function start() {
-    try {
-        await connection.start();
-        console.log("SignalR Connected.");
-    } catch (err) {
-        console.log(err);
-        setTimeout(start, 5000);
-    }
-};
-
 async function getdata() {
-    await fetch('http://localhost:5555/player')
+    await fetch('http://localhost:5555/businessManager')
         .then(x => x.json())
         .then(y => {
-            actors = y;
-            //console.log(actors);
+            BusinessManager = y;
+            console.log(BusinessManager);
             display();
         });
 }
 
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    actors.forEach(t => {
+    BusinessManager.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.Playerid + "</td><td>"
-            + t.name + "</td><td>" +
-        `<button type="button" onclick="remove(${t.Playerid})">Delete</button>`
-            + "</td></tr>";
+            "<tr><td>" + t.businessManagerId + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td>" + t.salary + "</td><td>" + `<button type="button" onclick="remove(${t.businessManagerId})">Delete</button>` + `<button type="button" onclick="showupdate(${t.businessManagerId})">Edit</button>` + "</td></tr>";
+        console.log(t.name)
     });
 }
 
 function remove(id) {
-    fetch('http://localhost:5555/player' + id, {
+    fetch('http://localhost:5555/businessManager/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -74,11 +62,13 @@ function remove(id) {
 
 function create() {
     let name = document.getElementById('name').value;
-    fetch('http://localhost:5555/player', {
+    let age = document.getElementById('age').value;
+    let salary = document.getElementById('salary').value;
+    fetch('http://localhost:5555/businessManager', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { actorName: name })
+            { name:name, age:age, salary:salary })
     })
         .then(response => response)
         .then(data => {

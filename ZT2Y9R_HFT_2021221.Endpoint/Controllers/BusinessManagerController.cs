@@ -9,7 +9,7 @@ using ZT2Y9R_HFT_2021221.Models;
 namespace ZT2Y9R_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
+    //[ApiController]
     public class BusinessManagerController : ControllerBase
     {
         IBusinessManagerLogic cl;

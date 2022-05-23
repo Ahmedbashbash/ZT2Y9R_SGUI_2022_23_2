@@ -24,15 +24,7 @@ namespace ZT2Y9R_HFT_2021221.Logic
 
         public void deleteBusinessManager(int id)
         {
-            BusinessManagers businessManager = this.BusinessManagerRepo.GetOne(id);
-            if (businessManager == null)
-            {
-                throw new InvalidOperationException("ERROR: No corresponding record!");
-            }
-            else
-            {
-                this.BusinessManagerRepo.Delete(id);
-            }
+            BusinessManagerRepo.Delete(id);
         }        
 
         public IQueryable<BusinessManagers> GetAllBusinessManagers()
