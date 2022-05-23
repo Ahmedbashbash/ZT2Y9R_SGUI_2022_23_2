@@ -47,9 +47,9 @@ namespace ZT2Y9R_HFT_2021221.Logic
         {
             BusinessManagers businessManagers = new BusinessManagers()
             {
-                Name = name,
+                name = name,
                 age = age,
-                Salary = salary
+                salary = salary
 
             };
             this.BusinessManagerRepo.Add(businessManagers);

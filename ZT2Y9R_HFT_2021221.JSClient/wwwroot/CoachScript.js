@@ -30,25 +30,23 @@ async function getdata() {
     await fetch('http://localhost:5555/Coach')
         .then(x => x.json())
         .then(y => {
-            BusinessManager = y;
-            console.log(BusinessManager);
+            Coach = y;
+            console.log(Coach);
             display();
         });
 }
 
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    BusinessManager.forEach(t => {
+    Coach.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.CoachId + "</td><td>"
-            + t.name + "</td><td>" +
-            `<button type="button" onclick="remove(${t.BusinessManagerId})">Delete</button>`
-            + "</td></tr>";
+            "<tr><td>" + t.coachId + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td>" + t.coachHireDate + "</td><td>" + `<button type="button" onclick="remove(${t.coachId})">Delete</button>` + `<button type="button" onclick="showupdate(${t.coachId})">Edit</button>` + "</td></tr>";
+        console.log(t.name)
     });
 }
 
 function remove(id) {
-    fetch('http://localhost:5555/Coach' + id, {
+    fetch('http://localhost:5555/coach/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -63,12 +61,14 @@ function remove(id) {
 }
 
 function create() {
-    let name = document.getElementById('name').value;
-    fetch('http://localhost:5555/BusinessManager', {
+    let nam = document.getElementById('name').value;
+    let ag = document.getElementById('age').value;
+    let coachHireDat = document.getElementById('coachHireDate').value;
+    fetch('http://localhost:5555/coach', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { Name: name })
+            { name: nam, age: ag, coachHireDate: coachHireDat })
     })
         .then(response => response)
         .then(data => {

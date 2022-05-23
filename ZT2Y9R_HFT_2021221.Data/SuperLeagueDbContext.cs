@@ -42,9 +42,9 @@ namespace ZT2Y9R_HFT_2021221.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            BusinessManagers businessManagers1 = new BusinessManagers() { BusinessManagerId = 1, Name = "Óscar Ribot", age = 42, Salary = 3 };
-            BusinessManagers businessManagers2 = new BusinessManagers() { BusinessManagerId = 2, Name = "Kia Joorabchian", age = 43, Salary = 2 };
-            BusinessManagers businessManagers3 = new BusinessManagers() { BusinessManagerId = 3, Name = "Jorge Antun", age = 39, Salary = 1 };
+            BusinessManagers businessManagers1 = new BusinessManagers() { BusinessManagerId = 1, name = "Óscar Ribot", age = 42, salary = 3 };
+            BusinessManagers businessManagers2 = new BusinessManagers() { BusinessManagerId = 2, name = "Kia Joorabchian", age = 43, salary = 2 };
+            BusinessManagers businessManagers3 = new BusinessManagers() { BusinessManagerId = 3, name = "Jorge Antun", age = 39, salary = 1 };
 
 
             Clubs clubs1 = new Clubs() { ClubId=1, Name="Real Madrid", NumberOfTrophies=66};

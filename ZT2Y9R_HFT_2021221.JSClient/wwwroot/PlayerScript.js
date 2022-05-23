@@ -40,15 +40,13 @@ function display() {
     document.getElementById('resultarea').innerHTML = "";
     Player.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.PlayerId + "</td><td>"
-            + t.name + "</td><td>" +
-        `<button type="button" onclick="remove(${t.Playerid})">Delete</button>`
-            + "</td></tr>";
+            "<tr><td>" + t.playerId + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td>" + t.position + "</td><td>" + t.playerSalary + "</td><td>" + `<button type="button" onclick="remove(${t.playerId})">Delete</button>` + `<button type="button" onclick="showupdate(${t.playerId})">Edit</button>` + "</td></tr>";
+        console.log(t.name)
     });
 }
 
 function remove(id) {
-    fetch('http://localhost:5555/player' + id, {
+    fetch('http://localhost:5555/player/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -63,12 +61,15 @@ function remove(id) {
 }
 
 function create() {
-    let name = document.getElementById('name').value;
+    let nam = document.getElementById('name').value;
+    let ag = document.getElementById('age').value;
+    let postio = document.getElementById('position').value;
+    let salar = document.getElementById('salary').value;
     fetch('http://localhost:5555/player', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { Name: name })
+            { name: name, age:ag, postion:postio, salary:salar })
     })
         .then(response => response)
         .then(data => {

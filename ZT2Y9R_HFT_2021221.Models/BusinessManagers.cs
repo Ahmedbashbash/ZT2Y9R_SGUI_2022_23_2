@@ -24,13 +24,13 @@ namespace ZT2Y9R_HFT_2021221.Models
 
         [MaxLength(100)]
         [Required]
-        public string Name { get; set; }
+        public string name { get; set; }
 
         [Required]
         public int age { get; set; }
 
         [Required]
-        public int? Salary { get; set; }        
+        public int? salary { get; set; }        
 
         [NotMapped]
         public virtual ICollection<Players> Players { get; }
@@ -38,7 +38,7 @@ namespace ZT2Y9R_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{this.BusinessManagerId} | {this.Name}, {this.Players.Count} Clients,  Salary: {this.Salary}m GBP";
+            return $"{this.BusinessManagerId} | {this.name}, {this.Players.Count} Clients,  salary: {this.salary}m GBP";
         }
 
 

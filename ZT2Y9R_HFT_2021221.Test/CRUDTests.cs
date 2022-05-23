@@ -120,9 +120,9 @@ namespace ZT2Y9R_HFT_2021221.Test
 
             List<BusinessManagers> testBusinessManagers = new List<BusinessManagers>()
             {
-                new BusinessManagers() { BusinessManagerId = 1, Name = "Jon", age =23, Salary= 15  },
-                new BusinessManagers() { BusinessManagerId = 2, Name = "Lilla",age =18, Salary= 12   },
-                new BusinessManagers() { BusinessManagerId = 3, Name = "Halk",age =27, Salary= 11   },
+                new BusinessManagers() { BusinessManagerId = 1, name = "Jon", age =23, salary= 15  },
+                new BusinessManagers() { BusinessManagerId = 2, name = "Lilla",age =18, salary= 12   },
+                new BusinessManagers() { BusinessManagerId = 3, name = "Halk",age =27, salary= 11   },
             };
 
             mockedBusinessManagerRepo.Setup(repo => repo.GetAll()).Returns(testBusinessManagers.AsQueryable());

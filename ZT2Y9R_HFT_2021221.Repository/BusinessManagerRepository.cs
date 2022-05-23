@@ -32,7 +32,7 @@ namespace ZT2Y9R_HFT_2021221.Repository
                 throw new InvalidOperationException("Business Manager not found");
             }
 
-            businessManagers.Salary = newSalary;
+            businessManagers.salary = newSalary;
             this.SuperLeagueDbContext.SaveChanges();
         }
     }

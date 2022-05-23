@@ -34,7 +34,7 @@ namespace ZT2Y9R_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{this.CoachId} | {this.Name}, {this.age} years old, Salary: {this.CoachSalary} M GBP, Club: {this.Club.Name}, Hire Date: {this.CoachHireDate}";
+            return $"{this.CoachId} | {this.Name}, {this.age} years old, salary: {this.CoachSalary} M GBP, Club: {this.Club.Name}, Hire Date: {this.CoachHireDate}";
         }
     }
 }

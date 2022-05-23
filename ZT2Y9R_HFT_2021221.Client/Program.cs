@@ -182,9 +182,9 @@ namespace Client
             int salary = int.Parse(Console.ReadLine());
             rest.Post(new BusinessManagers
             {
-                Name = name,
+                name = name,
                 age = age,
-                Salary = salary
+                salary = salary
 
             }, "Business Manager");
             Console.WriteLine("Business manager is added");

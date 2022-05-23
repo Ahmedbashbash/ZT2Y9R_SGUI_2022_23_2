@@ -1,4 +1,4 @@
-﻿let BusinessManager = [];
+﻿let Coach = [];
 let connection = null;
 getdata();
 setupSignalR();
@@ -30,15 +30,15 @@ async function getdata() {
     await fetch('http://localhost:5555/businessManager')
         .then(x => x.json())
         .then(y => {
-            BusinessManager = y;
-            console.log(BusinessManager);
+            Coach = y;
+            console.log(Coach);
             display();
         });
 }
 
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    BusinessManager.forEach(t => {
+    Coach.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.businessManagerId + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td>" + t.salary + "</td><td>" + `<button type="button" onclick="remove(${t.businessManagerId})">Delete</button>` + `<button type="button" onclick="showupdate(${t.businessManagerId})">Edit</button>` + "</td></tr>";
         console.log(t.name)
@@ -61,14 +61,14 @@ function remove(id) {
 }
 
 function create() {
-    let name = document.getElementById('name').value;
-    let age = document.getElementById('age').value;
-    let salary = document.getElementById('salary').value;
+    let ame = document.getElementById('name').value;
+    let ag = document.getElementById('age').value;
+    let salar = document.getElementById('salary').value;
     fetch('http://localhost:5555/businessManager', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name:name, age:age, salary:salary })
+            { name: ame, age: ag, salary: salar})
     })
         .then(response => response)
         .then(data => {

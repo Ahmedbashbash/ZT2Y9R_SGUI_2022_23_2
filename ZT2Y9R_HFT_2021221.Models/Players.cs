@@ -48,7 +48,7 @@ namespace ZT2Y9R_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{this.PlayerId} | {this.Name}, Age: {this.age}, Team: {this.Club.Name}, Postion: {this.Position}, Salary: {this.PlayerSalary}m GBP, Agent: {BusinessManagers.Name}";
+            return $"{this.PlayerId} | {this.Name}, Age: {this.age}, Team: {this.Club.Name}, Postion: {this.Position}, salary: {this.PlayerSalary}m GBP, Agent: {BusinessManagers.name}";
         }
 
 
